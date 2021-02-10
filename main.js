@@ -161,3 +161,113 @@ const inventory = [
     sold: 8,
   },
 ];
+// Opdracht 3a
+
+function totalYield(inventory){
+  for (const inventoryElement of inventory) {
+    let yield = inventoryElement.price * inventoryElement.originalStock;
+    console.log(yield)
+  }
+}
+
+// Opdracht 1a
+function currentStock (inventory) {
+  let amount;
+  for (const inventoryElement of inventory) {
+    amount = inventoryElement.originalStock - inventoryElement.sold;
+    console.log('Original stock: ', inventoryElement.originalStock, 'Sold: ', inventoryElement.sold)
+    console.log('Of all ', inventoryElement.name, ' the current stock is ', amount)
+  }
+  return amount;
+}
+
+//Opdracht 1a, 1b, 3b
+buildTable(inventory);
+function buildTable(inventory) {
+  const table = document.getElementById('tvTable');
+  for (const inventoryElement of inventory) {
+    let amount = inventoryElement.originalStock - inventoryElement.sold;
+    let yield = inventoryElement.price * inventoryElement.originalStock;
+    let row = '<tr>' +
+                '<td>' + inventoryElement.type + '</td>' +
+                '<td>' + inventoryElement.name + '</td>' +
+                '<td>' + inventoryElement.brand + '</td>' +
+                '<td>' + inventoryElement.price + '</td>' +
+                '<td>' + inventoryElement.availableSizes + '</td>' +
+                '<td>' + inventoryElement.refreshRate + '</td>' +
+                '<td>' + inventoryElement.screenType + '</td>' +
+                '<td>' + inventoryElement.screenQuality + '</td>' +
+                '<td>' + inventoryElement.smartTv + '</td>' +
+                '<td>' + inventoryElement.originalStock + '</td>' +
+                '<td>' + inventoryElement.sold + '</td>' +
+                '<td style="color: red">' + amount + '</td>' +
+                '<td style="color: blue">' + '$' + yield + '</td>' +
+              '</tr>';
+    console.log(row)
+    table.innerHTML += row;
+  }
+}
+
+// Opdracht 2a
+let tvNames = inventory.map((tv) => {
+  return `Name: ${tv.name} <br>`;
+});
+console.log(tvNames)
+
+// Opdracht 2b
+let soldOutTV = inventory.filter((tv) => {
+  return tv.originalStock === tv.sold
+});
+console.log(soldOutTV);
+
+// Opdracht 2c
+let ambiLightTV = inventory.filter((tv) => {
+  return tv.options.ambiLight === true;
+})
+console.log(ambiLightTV)
+
+// Opdracht 2d
+let sortedTV = inventory.sort((a,b) => {
+  if (a.price > b.price){
+    return 1;
+  }
+  if (a.price <  b.price) {
+    return -1;
+  }
+  return 0;
+})
+console.log(sortedTV);
+
+const displayTV = document.getElementById('displayTV');
+
+function writeString (tv) {
+  return (`${tv.brand} ${tv.type} - ${tv.name} \n
+                 €${tv.price},- \n
+                 ${tv.availableSizes} inch `);
+}
+
+console.log(writeString(inventory[2]))
+
+displayTV.append(writeString(inventory[2]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

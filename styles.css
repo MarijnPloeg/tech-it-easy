@@ -1,0 +1,29 @@
+#tv {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tv td, #tv th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tv tr:nth-child(even){background-color: #f2f2f2;}
+
+#tv tr:hover {background-color: #ddd;}
+
+#tv th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#displayTV {
+    font-size: 21px;
+    margin: 35px;
+    height: 200px;
+    width: 800px;
+}
